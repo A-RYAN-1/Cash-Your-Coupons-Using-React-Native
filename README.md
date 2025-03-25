@@ -1,54 +1,92 @@
-<<<<<<< HEAD
-# Welcome to your Expo app 👋
+# Cash Your Coupons
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Cash Your Coupons is a mobile application built using **React Native Expo** that allows users to buy, sell, and exchange unused promo codes and coupons securely. The app leverages **Google Firebase** for backend and database management, while **Tailwind CSS** is used for styling.
 
-## Get started
+## Table of Contents
 
-1. Install dependencies
+- [Tech Stack](#tech-stack)
+- [Project Setup](#project-setup)
+- [Backend & Database](#backend--database)
+- [Frontend (React Native Expo)](#frontend-react-native-expo)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [Project Demo](#project-demo)
 
-   ```bash
-   npm install
-   ```
+## Tech Stack
 
-2. Start the app
+This project uses the following technologies:
 
-   ```bash
+- **Frontend**: React Native Expo
+- **Backend & Database**: Google Firebase
+- **Styling**: Tailwind CSS
+
+## Project Setup
+
+To set up the project locally, follow these steps:
+
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/A-RYAN-1/Cash-Your-Coupons.git
+    cd Cash-Your-Coupons
+    ```
+
+2. **Install dependencies**:
+   - Recheck once, may vary from version to version
+    ```bash
+    npm install
+    ```
+
+4. **Set up Firebase**:
+    - Create a Firebase project at [Firebase Console](https://console.firebase.google.com/).
+    - Enable Firestore Database and Authentication as needed.
+    - Obtain the Firebase configuration file (`firebaseConfig.js`) and place it in the project root.
+
+5. **Start the development server**:
+    ```bash
     npx expo start
-   ```
+    ```
 
-In the output, you'll find options to open the app in a
+6. **Run the app on a simulator or physical device**:
+   - In emulator device enter this url after running Expo app on it (Metro waiting on exp://192.168.72.253:8081)
+   - In physical device, ccan the QR code above with Expo Go (Android) or the Camera app (iOS)
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Backend & Database
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+The app uses **Google Firebase** as the backend and database service. Firebase Firestore stores coupon details, user data, and transactions. Firebase Authentication is used for user login and signup.
 
-## Get a fresh project
+### Firebase Features Used:
+- **Firestore Database**: Stores coupon details, transactions, and user profiles..
 
-When you're ready, run:
+## Frontend (React Native Expo)
 
-```bash
-npm run reset-project
-```
+The frontend is built using **React Native Expo**, providing a cross-platform experience for both Android and iOS.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### Key Features:
+1. **User Authentication**: Sign up and login using email/password or Google authentication.
+2. **Buy, Sell, and Exchange Coupons**: Users can list coupons for sale or exchange.
 
-## Learn more
+### Future Scope
+1. **Secure Transactions**: Coupons are validated before being sold.
+2. **Real-time Notifications**: Users get notified when someone purchases or requests a coupon.
+& Many More
 
-To learn more about developing your project with Expo, look at the following resources:
+### Styling
+The app uses **Tailwind CSS** for responsive and modern UI design.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Usage
 
-## Join the community
+1. Start the backend services (Firebase Firestore and Authentication).
+2. Run the mobile app using Expo (`npx expo start`).
+3. Register or log in to access the platform.
+4. List, buy, or exchange coupons securely.
 
-Join our community of developers creating universal apps.
+## Contributing
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
-=======
-# Cash-Your-Coupons-Using-React-Native
->>>>>>> a9b2c069b396a82ce9b1fb16228f66f2958cb338
+1. Fork the repository.
+2. Create your feature branch (`git checkout -b feature-branch`).
+3. Commit your changes (`git commit -am 'Add new feature'`).
+4. Push to the branch (`git push origin feature-branch`).
+5. Open a pull request.
+
+## Project Demo
+

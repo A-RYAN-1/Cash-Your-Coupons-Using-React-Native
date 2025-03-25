@@ -90,3 +90,4 @@ The app uses **Tailwind CSS** for responsive and modern UI design.
 
 ## Project Demo
 
+https://github.com/user-attachments/assets/74b675a5-1472-46b8-a319-c8af1d8df578

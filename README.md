@@ -52,10 +52,10 @@ To set up the project locally, follow these steps:
 
 ## Backend & Database
 
-The app uses **Google Firebase** as the backend and database service. Firebase Firestore stores coupon details, user data, and transactions. Firebase Authentication is used for user login and signup.
+The app uses **Google Firebase** as the backend and database service. Firebase Firestore stores coupon details.
 
 ### Firebase Features Used:
-- **Firestore Database**: Stores coupon details, transactions, and user profiles..
+- **Firestore Database**: Stores coupon details.
 
 ## Frontend (React Native Expo)
 

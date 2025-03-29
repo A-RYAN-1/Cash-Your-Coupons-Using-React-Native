@@ -18,17 +18,11 @@ export default function SellScreen() {
   const categories = [
     "Food",
     "Clothes",
-    "Fashion",
     "Travel",
     "Electronics",
     "Online Gaming",
     "Beauty",
     "Health & Wellness",
-    "Entertainment",
-    "Education",
-    "Sports & Fitness",
-    "Home & Living",
-    "Automobile",
     "Others",
   ];
 
@@ -40,6 +34,13 @@ export default function SellScreen() {
     const querySnapshot = await getDocs(collection(db, "Coupons"));
     const couponsList = querySnapshot.docs.map((doc) => doc.data());
     setCoupons(couponsList);
+  };
+
+  const convertDate = (dateString) => {
+    const parts = dateString.split("-");
+    if (parts.length !== 3) return null;
+    const [day, month, year] = parts.map(Number);
+    return new Date(year, month - 1, day); // Month is 0-based in JS Date
   };
 
   return (
@@ -55,13 +56,26 @@ export default function SellScreen() {
             title: "",
             category: "",
             price: "",
-            percentageOff: "",
-            contact: "",
+            expiryDate: "",
             description: "",
           }}
           onSubmit={async (values, { resetForm }) => {
-            if (!values.title || !values.category || !values.price) {
+            if (
+              !values.title ||
+              !values.category ||
+              !values.price ||
+              !values.expiryDate
+            ) {
               Alert.alert("Error", "Please fill in all required fields.");
+              return;
+            }
+
+            const expiryDateObj = convertDate(values.expiryDate);
+            if (!expiryDateObj) {
+              Alert.alert(
+                "Error",
+                "Invalid expiry date format. Use dd-mm-yyyy."
+              );
               return;
             }
 
@@ -69,11 +83,10 @@ export default function SellScreen() {
               await addDoc(collection(db, "Coupons"), {
                 ...values,
                 price: parseFloat(values.price),
+                expiryDate: expiryDateObj, // Stored as Date type in Firebase
               });
 
-              // Reset form BEFORE showing alert
               resetForm();
-
               Alert.alert("Success", "Coupon submitted successfully!");
             } catch (error) {
               console.error("Error adding document: ", error);
@@ -138,26 +151,14 @@ export default function SellScreen() {
               />
 
               <Text className="text-lg font-semibold text-gray-800 mb-2">
-                Percentage Off on Coupon
+                Expiry Date (-mm-yyyy)
               </Text>
               <TextInput
                 className="border border-gray-300 rounded-lg p-3 mb-4 text-lg bg-white"
-                placeholder="Enter discount percentage"
-                value={values.percentageOff}
-                onChangeText={handleChange("percentageOff")}
-                onBlur={handleBlur("percentageOff")}
-                keyboardType="numeric"
-              />
-
-              <Text className="text-lg font-semibold text-gray-800 mb-2">
-                Contact Details
-              </Text>
-              <TextInput
-                className="border border-gray-300 rounded-lg p-3 mb-4 text-lg bg-white"
-                placeholder="Enter contact details"
-                value={values.contact}
-                onChangeText={handleChange("contact")}
-                onBlur={handleBlur("contact")}
+                placeholder="Enter expiry date (dd-mm-yyyy)"
+                value={values.expiryDate}
+                onChangeText={handleChange("expiryDate")}
+                onBlur={handleBlur("expiryDate")}
               />
 
               <Text className="text-lg font-semibold text-gray-800 mb-2">
@@ -165,7 +166,7 @@ export default function SellScreen() {
               </Text>
               <TextInput
                 className="border border-gray-300 rounded-lg p-3 mb-4 text-lg bg-white h-24"
-                placeholder="Enter coupon details"
+                placeholder="Enter coupon details like percentage off, terms and conditions, etc."
                 value={values.description}
                 onChangeText={handleChange("description")}
                 onBlur={handleBlur("description")}
